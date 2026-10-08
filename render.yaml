@@ -1,0 +1,47 @@
+# Blueprint Render — crée en une fois le backend (Docker) + la base PostgreSQL.
+# Déploiement : Render.com → New → Blueprint → sélectionner ce dépôt GitHub.
+# Après création, renseigner la valeur de JWT_SECRET dans le dashboard (voir DEPLOIEMENT.md).
+
+databases:
+  - name: gestioncave-db
+    databaseName: gestioncave
+    user: gestioncave
+    plan: free
+    region: frankfurt
+
+services:
+  - type: web
+    name: gestioncave-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    dockerfilePath: Dockerfile
+    envVars:
+      # Connexion à la base managée : chaque propriété est injectée par Render.
+      - key: DB_HOST
+        fromDatabase:
+          name: gestioncave-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: gestioncave-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: gestioncave-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: gestioncave-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: gestioncave-db
+          property: password
+      # Secret JWT (Base64, ≥32 octets). À saisir dans le dashboard, PAS dans le dépôt.
+      - key: JWT_SECRET
+        sync: false
+      # Durée de validité du token (12h). Modifiable si besoin.
+      - key: JWT_EXPIRATION_MS
+        value: "43200000"

@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: gestion-cave
+
+  datasource:
+    # En production, l'URL est construite depuis les propriétés de la base
+    # managée (DB_HOST/DB_PORT/DB_NAME injectées par l'hébergeur). DB_URL permet
+    # de surcharger entièrement l'URL si besoin. En local : localhost:5432.
+    url: ${DB_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:gestioncave}}
+    username: ${DB_USER:gestioncave}
+    password: ${DB_PASSWORD:gestioncave}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          time_zone: UTC
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+server:
+  # En production, les hébergeurs (Render, Railway…) injectent PORT.
+  # En local, on retombe sur SERVER_PORT puis 8080.
+  port: ${PORT:${SERVER_PORT:8080}}
+
+app:
+  security:
+    jwt:
+      # Clé HMAC-SHA256 encodée en Base64 (à surcharger via variable d'environnement en production)
+      secret: ${JWT_SECRET:Y2hhbmdlLW1lLXRoaXMtaXMtYS1kZXYtc2VjcmV0LWtleS1nZXN0aW9uLWNhdmUtMjAyNg==}
+      # Durée de validité du token en millisecondes (12h par défaut)
+      expiration-ms: ${JWT_EXPIRATION_MS:43200000}
+    login:
+      # Nombre d'échecs de connexion avant blocage temporaire de l'identifiant
+      max-tentatives: ${LOGIN_MAX_TENTATIVES:5}
+      # Durée du blocage en minutes une fois le seuil atteint
+      blocage-minutes: ${LOGIN_BLOCAGE_MINUTES:15}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://192.168.1.67:3000}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    org.flywaydb: INFO

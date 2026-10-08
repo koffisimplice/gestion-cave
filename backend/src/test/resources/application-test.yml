@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+app:
+  security:
+    jwt:
+      secret: Y2hhbmdlLW1lLXRoaXMtaXMtYS1kZXYtc2VjcmV0LWtleS1nZXN0aW9uLWNhdmUtMjAyNg==
+      expiration-ms: 43200000
+  cors:
+    allowed-origins: http://localhost:3000
+  sauvegarde:
+    dossier: target/test-sauvegardes
+    max-fichiers: 5
+    cron: "-"

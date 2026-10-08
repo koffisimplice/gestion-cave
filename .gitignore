@@ -1,0 +1,32 @@
+# ----- Dépendances -----
+node_modules/
+
+# ----- Backend (Java / Maven) -----
+backend/target/
+*.class
+
+# ----- Frontend web (Next.js) -----
+frontend/.next/
+frontend/out/
+frontend/tsconfig.tsbuildinfo
+
+# ----- Mobile (Expo / React Native) -----
+mobile/.expo/
+mobile/dist/
+mobile/dist-check/
+mobile/web-build/
+mobile/expo-env.d.ts
+
+# ----- IDE / OS -----
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ----- Logs -----
+*.log
+npm-debug.log*
+
+# ----- Divers -----
+sauvegardes/

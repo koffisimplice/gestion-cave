@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Palette sobre : bleu ardoise professionnel, fond clair */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --primary: 222 47% 31%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 222 47% 20%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 92%;
+    --accent-foreground: 222 47% 20%;
+
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 62% 34%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 45%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 214 26% 87%;
+    --input: 214 26% 84%;
+    --ring: 222 47% 31%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+  }
+}
