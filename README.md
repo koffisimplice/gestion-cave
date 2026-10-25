@@ -1,11 +1,29 @@
-# Gestion Cave / Maquis
+# Gestion Cave / Maquis — Application full-stack (Web + Mobile + API)
 
-Application de gestion de stock, ventes, marges, bénéfices et charges pour points de vente de boissons (caves/maquis). Digitalise la logique du registre papier avec calculs automatiques.
+Application **full-stack** de gestion de stock, ventes, marges, bénéfices et charges pour
+des points de vente de boissons (caves / maquis). Elle digitalise la logique du registre
+papier avec calculs automatiques, gestion multi-établissements, rôles et reporting.
+
+> **Projet personnel**, conçu et développé de bout en bout (API, web et mobile) :
+> architecture, sécurité JWT, base de données, interfaces et déploiement.
+
+**Stack technique :** Java / Spring Boot · PostgreSQL · Next.js + TypeScript · React Native (Expo) · Docker
 
 ## Stack
 
-- **Backend** : Java 17 + Spring Boot 3.3 (Web, Data JPA, Security/JWT, Validation), PostgreSQL, Flyway, OpenAPI/Swagger
-- **Frontend** : Next.js 14 (App Router, TypeScript), Tailwind CSS, composants style shadcn/ui
+- **Backend** : Java 17 + Spring Boot 3.3 (Web, Data JPA, Security/JWT, Validation), PostgreSQL, Flyway, OpenAPI/Swagger, Docker
+- **Frontend web** : Next.js 14 (App Router, TypeScript), Tailwind CSS, composants style shadcn/ui
+- **Mobile** : React Native + Expo (TypeScript, Expo Router)
+
+## Captures d'écran
+
+<!-- Ajoute ici quelques captures (web + mobile). Place les images dans un dossier `docs/`
+     puis référence-les, par exemple : -->
+<!-- ![Tableau de bord](docs/dashboard.png) -->
+<!-- ![Registre journalier](docs/registre.png) -->
+<!-- ![Application mobile](docs/mobile.png) -->
+
+_Captures à venir._
 
 ## Prérequis
 
@@ -48,6 +66,17 @@ npm run dev
 ```
 
 Application : http://localhost:3000
+
+## Lancer le mobile (Expo / React Native)
+
+```bash
+cd mobile
+npm install
+npx expo start
+```
+
+Copier `mobile/.env.example` en `mobile/.env` et renseigner l'URL de l'API
+(`EXPO_PUBLIC_API_URL`) accessible depuis le téléphone.
 
 ## Tests backend
 

@@ -30,3 +30,8 @@ npm-debug.log*
 
 # ----- Divers -----
 sauvegardes/
+
+# ----- Variables d'environnement -----
+.env
+.env.local
+.env*.local
