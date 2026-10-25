@@ -40,13 +40,15 @@ git push -u origin main
 3. Sélectionne ton dépôt `gestioncave`. Render détecte automatiquement le fichier **`render.yaml`** à la racine et propose de créer :
    - `gestioncave-db` (PostgreSQL, plan gratuit)
    - `gestioncave-api` (service web Docker, plan gratuit)
-4. Render demande la valeur du secret **`JWT_SECRET`** (marqué « sync: false »). Colle cette clé (déjà générée, valide Base64 256 bits) :
+4. Render demande la valeur du secret **`JWT_SECRET`** (marqué « sync: false »). Génère une
+   clé aléatoire Base64 (≥ 32 octets) et colle-la dans le dashboard — par exemple :
 
-   ```
-   b2nDXcUCDDiBjHdt2JqpS91m1BsZXLp202GU+g0cOEshUTJDm+XGfZ/4xSSKgBj5
+   ```bash
+   openssl rand -base64 48
    ```
 
-   > Tu peux en générer une autre plus tard ; si tu la changes, tous les utilisateurs devront se reconnecter.
+   > ⚠️ Ne mets jamais cette clé dans le dépôt (il est public). Si tu la changes plus tard,
+   > tous les utilisateurs devront se reconnecter.
 5. Clique **Apply**. Render construit l'image Docker (quelques minutes la première fois), applique les migrations Flyway, et démarre l'API.
 6. Une fois « Live », note l'URL publique du service, de la forme :
 
